@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    form#form 
+        input#search(placeholder='Enter a location')
+        button Search
+    p#p Enter a location or click on a place on the map to get the weather.
+    p#display
+    p#display2
+    div#mapcontainer
+        div#map
+block scripts
+    script(src='/javascripts/js.js')
+    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD5Jykj8ltkqHEhDVQfhYW8fHv6B7200cs&callback=initMap')
+    
+    
