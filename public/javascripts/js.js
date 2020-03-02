@@ -6,7 +6,7 @@ const p = document.getElementById('p');
 
 window.map = undefined;
 const reverseGeocode = (place) => {
-    fetch(`https://us1.locationiq.com/v1/reverse.php?key=58c08d5c010082&lat=${place.lat}&lon=${place.lng}&format=json`)
+    fetch(`https://us1.locationiq.com/v1/reverse.php?key=???&lat=${place.lat}&lon=${place.lng}&format=json`)
         .then((resp) => {
             resp.json()
                 .then((data) => {
