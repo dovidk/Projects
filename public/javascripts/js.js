@@ -3,6 +3,38 @@ const search = document.getElementById('search');
 const display = document.getElementById('display');
 const display2 = document.getElementById('display2');
 const p = document.getElementById('p');
+const currentLocation = document.getElementById('currentLocation');
+
+currentLocation.addEventListener('click', () => {
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                p.innerText = '';
+                display.innerText = 'Loading...';
+                fetch(`/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}`)
+                    .then((resp) => {
+                        resp.json()
+                            .then((data) => {
+                                const latLng = {
+                                    lat: position.coords.latitude,
+                                    lng: position.coords.longitude
+                                };
+                                reverseGeocode(latLng);
+                                window.map.panTo(latLng);
+                                window.map.setZoom(10);
+                                display2.innerText = data.forecastData;
+                            });
+                    });
+            },
+            () => {
+                p.innerText = `An error has occured while retrieving location`;
+            }
+        );
+    }
+    else {
+        p.innerText = 'geolocation is not enabled on this browser';
+    }
+});
 
 window.map = undefined;
 const reverseGeocode = (place) => {
