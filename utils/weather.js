@@ -4,7 +4,7 @@ const request = require('request');
 
 const weather = (place, callback) => {
     request({
-        url: `https://api.openweathermap.org/data/2.5/weather?lat=${place.lat}&lon=${place.lon}&units=imperial&appid=49627df9e6bd93e43fb25a66f004a786`,
+        url: `https://api.openweathermap.org/data/2.5/weather?lat=${place.lat}&lon=${place.lon}&units=imperial&appid=???`,
         json: true
     }, (err, response) => {
         if (err) {
