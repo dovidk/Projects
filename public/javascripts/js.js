@@ -32,7 +32,7 @@ window.onload = () => {
     window.map.addListener('click', (e) => {
         p.innerText = '';
         display.innerText = 'Loading...';
-        fetch(`http://localhost:3000/weather?lat=${e.latLng.lat()}&lon=${e.latLng.lng()}`)
+        fetch(`/weather?lat=${e.latLng.lat()}&lon=${e.latLng.lng()}`)
             .then((resp) => {
                 resp.json()
                     .then((data) => {
@@ -56,7 +56,7 @@ form.addEventListener('submit', (e) => {
     display.innerText = 'Loading...';
     display2.innerText = '';
 
-    fetch(`http://localhost:3000/weather?location=${search.value}`)
+    fetch(`/weather?location=${search.value}`)
         .then((resp) => {
             resp.json()
                 .then((data) => {
